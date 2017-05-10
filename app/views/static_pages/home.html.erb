@@ -1,7 +1,32 @@
 <% provide(:title, "Home") %>
-<h1>Sample App</h1>
+<h1>Sample Search Field</h1>
 <p>
-  This is the home page for the
+  The following is a sample search box for UGA
+  <!--This is the home page for the
   <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
+  sample application.-->
 </p>
+
+<script type="text/javascript">
+      function searchPrimo() {
+             document.getElementById("primoQuery").value = "any,contains," + document.getElementById("primoQueryTemp").value;
+             document.forms["searchForm"].submit();
+      }
+      
+      function searchKeyPress(e) {
+            if (typeof e == 'undefined' && window.event) {
+                  e = window.event;
+            }
+            if (e.keyCode == 13) {
+                  document.getElementById('go').click();
+            }
+      }
+</script>
+<p><b>Search for</b></p>
+<form name="searchForm" role="search" method="get" action="http://galileo-usg-uga-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self"  onsubmit="searchPrimo()">
+    <input name="institution" value="01GALI_UGA" type="hidden">
+    <input name="vid" value="UGA" type="hidden">
+    <input type="hidden" id="primoQuery" name="query" />
+    <input type="text" size="25" id="primoQueryTemp" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
+    <input id="go" type="button" value="Search" title="Search" onclick="searchPrimo();" alt="Search">
+</form>
