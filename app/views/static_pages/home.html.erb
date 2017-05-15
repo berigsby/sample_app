@@ -1,7 +1,7 @@
 <% provide(:title, "Home") %>
 <h1>Sample Search Field</h1>
 <p>
-  The following is a sample search box for UGA
+  The following is a simple search box for UGA
   <!--This is the home page for the
   <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
   sample application.-->
@@ -29,4 +29,44 @@
     <input type="hidden" id="primoQuery" name="query" />
     <input type="text" size="25" id="primoQueryTemp" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
     <input id="go" type="button" value="Search" title="Search" onclick="searchPrimo();" alt="Search">
+</form>
+
+
+<p>
+  The following is a search box for UGA that searches only locations:
+  Special Collections Hargrett Rare Books (RBV) and
+  Special Collections Hargrett
+  <!--This is the home page for the
+  <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+  sample application.-->
+</p>
+
+<script type="text/javascript">
+      function searchPrimo1() {
+             document.getElementById("primoQuery1").value = "any,contains," + document.getElementById("primoQueryTemp1").value;
+             document.forms["searchForm1"].submit();
+      }
+      
+      function searchKeyPress(e) {
+            if (typeof e == 'undefined' && window.event) {
+                  e = window.event;
+            }
+            if (e.keyCode == 13) {
+                  document.getElementById('go1').click();
+            }
+      }
+</script>
+<p><b>Search for</b></p>
+<form name="searchForm1" role="search" method="get" action="http://galileo-usg-uga-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self"  onsubmit="searchPrimo1()">
+    <input name="institution" value="01GALI_UGA" type="hidden">
+    <input name="vid" value="UGA" type="hidden">
+    <input name="fctIncV" value="Special Collections Hargrett Rare Books (RBV)$$IUGA" type="hidden">
+    <input name="mulIncFctN" value="facet_local1" type="hidden">
+    <input name="rfnIncGrp" value="1" type="hidden">
+    <input name="fctIncV" value="Special Collections Hargrett$$IUGA" type="hidden">
+    <input name="mulIncFctN" value="facet_local1" type="hidden">
+    <input name="rfnIncGrp" value="1" type="hidden">
+    <input type="hidden" id="primoQuery1" name="query" />
+    <input type="text" size="25" id="primoQueryTemp1" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
+    <input id="go1" type="button" value="Search" title="Search" onclick="searchPrimo1();" alt="Search">
 </form>
