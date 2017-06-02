@@ -1,9 +1,61 @@
 <% provide(:title, "Help") %>
-<h1>Help</h1>
+<!--<h1>Help</h1>
 <p>
   Get help on the Ruby on Rails Tutorial at the
   <a href="http://www.railstutorial.org/help">Rails Tutorial help page</a>.
   To get help on this sample app, see the
   <a href="http://www.railstutorial.org/book"><em>Ruby on Rails Tutorial</em>
   book</a>.
+</p>-->
+<h1>Sample Search Field</h1>
+<p>
+  The following is a simple search box for UGA
+  <!--This is the home page for the
+  <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+  sample application.-->
 </p>
+
+<script type="text/javascript">
+      function searchPrimo() {
+             document.getElementById("primoQuery").value =  document.getElementById("searchparam").value + ",contains," + document.getElementById("primoQueryTemp").value;
+             document.forms["searchForm"].submit();
+      }
+      
+      function searchKeyPress(e) {
+            if (typeof e == 'undefined' && window.event) {
+                  e = window.event;
+            }
+            if (e.keyCode == 13) {
+                  document.getElementById('go').click();
+            }
+      }
+</script>
+<p><b>Search for</b></p>
+<form name="searchForm" role="search" method="get" action="http://galileo-usg-clayton-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self"  onsubmit="searchPrimo()">
+    <input name="institution" value="01GALI_CLAYTON" type="hidden">
+    <input name="vid" value="CLAYTON_V1" type="hidden">
+    <input name="search_scope" value="CLAYTON" type="hidden">
+    <select id = "searchparam">
+        <option value="any">All fields</option>
+        <option value="title">Title</option>
+        <option value="sub">Subject</option>
+        <option value="isbn">ISBN</option>
+        <option value="creator">Creator</option>
+    </select>
+    <input type="hidden" id="primoQuery" name="query" />
+    <input type="text" size="25" id="primoQueryTemp" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
+    <input id="go" type="button" value="Search" title="Search" onclick="searchPrimo();" alt="Search">
+    </form>
+    
+<div>
+	<form>
+		<label for="1496414316426">Keywords: </label><input type="text" id="1496414316426"><a class="search_link1496414316426"><button>Search</button></a>
+	<script type="text/javascript">
+	$("a.search_link1496414316426").on("click",function1496414316426);
+	function function1496414316426(){
+	var target = "http://galileo-usg-clayton-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do?vid=CLAYTON_V1&institution=01GALI_CLAYTON&tab=default_tab&indx=1&bulkSize=10&srt=relevance&sortField=default&search_scope=CLAYTON&query=any,contains,"+document.getElementById('1496414316426').value;
+	window.open(target,'_blank');
+	}
+	</script>
+		</form>
+</div>    

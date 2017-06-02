@@ -1,5 +1,5 @@
 <% provide(:title, "About") %>
-<h1>About</h1>
+<!--<h1>About</h1>
 <p>
   The <a href="http://www.railstutorial.org/"><em>Ruby on Rails
   Tutorial</em></a> is a
@@ -8,4 +8,38 @@
   to teach web development with
   <a href="http://rubyonrails.org/">Ruby on Rails</a>.
   This is the sample application for the tutorial.
-</p>
+</p>-->
+<!--<p></%=@response%></p>-->
+<script type="text/javascript">
+      function searchPrimo() {
+             document.getElementById("primoQuery").value = document.getElementById("searchparam").value + ",contains," + document.getElementById("primoQueryTemp").value;
+             document.forms["searchForm"].submit();
+      }
+      
+      function searchKeyPress(e) {
+            if (typeof e == 'undefined' && window.event) {
+                  e = window.event;
+            }
+            if (e.keyCode == 13) {
+                  document.getElementById('go').click();
+            }
+      }
+</script>
+<p><b>Search for</b></p>
+<form name="searchForm" role="search" method="get" action="http://galileo-usg-uga-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self"  onsubmit="searchPrimo()">
+    <input name="institution" value="01GALI_UGA" type="hidden">
+    <input name="vid" value="UGA" type="hidden">
+    <input name="fctIncV" value="Special Collections Hargrett Rare Books (RBV)$$IUGA" type="hidden">
+    <input name="mulIncFctN" value="facet_local1" type="hidden">
+    <input name="rfnIncGrp" value="2" type="hidden">
+    <select id = "searchparam">
+        <option value="any">All fields</option>
+        <option value="title">Title</option>
+        <option value="sub">Subject</option>
+        <option value="isbn">ISBN</option>
+        <option value="creator">Creator</option>
+    </select>
+    <input type="hidden" id="primoQuery" name="query" />
+    <input type="text" size="25" id="primoQueryTemp" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
+    <input id="go" type="button" value="Search" title="Search" onclick="searchPrimo();" alt="Search">
+</form>

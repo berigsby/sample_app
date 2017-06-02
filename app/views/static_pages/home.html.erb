@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
       function searchPrimo() {
-             document.getElementById("primoQuery").value = "any,contains," + document.getElementById("primoQueryTemp").value;
+             document.getElementById("primoQuery").value = document.getElementById("searchparam").value + ",contains," + document.getElementById("primoQueryTemp").value;
              document.forms["searchForm"].submit();
       }
       
@@ -22,10 +22,19 @@
             }
       }
 </script>
+
 <p><b>Search for</b></p>
+
 <form name="searchForm" role="search" method="get" action="http://galileo-usg-uga-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do" enctype="application/x-www-form-urlencoded; charset=utf-8" id="simple" target="_self"  onsubmit="searchPrimo()">
     <input name="institution" value="01GALI_UGA" type="hidden">
     <input name="vid" value="UGA" type="hidden">
+    <select id = "searchparam">
+        <option value="any">All fields</option>
+        <option value="title">Title</option>
+        <option value="sub">Subject</option>
+        <option value="isbn">ISBN</option>
+        <option value="creator">Creator</option>
+      </select>
     <input type="hidden" id="primoQuery" name="query" />
     <input type="text" size="25" id="primoQueryTemp" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
     <input id="go" type="button" value="Search" title="Search" onclick="searchPrimo();" alt="Search">
@@ -62,10 +71,11 @@
     <input name="vid" value="UGA" type="hidden">
     <input name="fctIncV" value="Special Collections Hargrett Rare Books (RBV)$$IUGA" type="hidden">
     <input name="mulIncFctN" value="facet_local1" type="hidden">
-    <input name="rfnIncGrp" value="1" type="hidden">
+    <input name="rfnIncGrp" value="2" type="hidden">
     <input name="fctIncV" value="Special Collections Hargrett$$IUGA" type="hidden">
     <input name="mulIncFctN" value="facet_local1" type="hidden">
     <input name="rfnIncGrp" value="1" type="hidden">
+     <!--THIS ALSO WORKS <input name="query" value="facet_local1,exact,Special Collections Hargrett Rare Books (RBV)$$IUGA" type="hidden">-->
     <input type="hidden" id="primoQuery1" name="query" />
     <input type="text" size="25" id="primoQueryTemp1" value=" " name="queryTemp" onkeypress="return searchPrimoEvent(event);" />
     <input id="go1" type="button" value="Search" title="Search" onclick="searchPrimo1();" alt="Search">
